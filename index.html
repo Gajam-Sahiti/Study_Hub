@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyHub — A quieter way to study</title>
+
+  <!-- Google Fonts: Playfair Display (serif display) + Inter (sans body/UI) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Lucide Icons (lightweight icon set, no framework) -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ============================================
+       NAVBAR — masthead style, hairline bottom rule
+  ============================================= -->
+  <header class="masthead">
+    <div class="masthead__inner">
+
+      <a href="#top" class="masthead__logo" aria-label="StudyHub home">
+        <span class="masthead__logo-mark">S.</span>
+        <span class="masthead__logo-text">StudyHub</span>
+      </a>
+
+      <nav class="masthead__nav" aria-label="Primary navigation">
+        <a href="#hero" class="masthead__link">Overview</a>
+        <a href="#todo" class="masthead__link">To&#8209;Do</a>
+        <a href="#notes" class="masthead__link">Notes</a>
+        <a href="#timetable" class="masthead__link">Timetable</a>
+      </nav>
+
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle dark mode" aria-pressed="false">
+        <i data-lucide="sun" class="theme-toggle__icon theme-toggle__icon--sun"></i>
+        <i data-lucide="moon" class="theme-toggle__icon theme-toggle__icon--moon"></i>
+      </button>
+
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- ============================================
+         HERO — greeting / date left, pull-quote right
+    ============================================= -->
+    <section class="hero" id="hero">
+      <div class="hero__inner">
+
+        <div class="hero__intro reveal">
+          <p class="eyebrow">Today</p>
+          <h1 class="hero__greeting" id="greeting">Good evening, Scholar</h1>
+          <p class="hero__date" id="currentDate">Thursday, 9 July</p>
+        </div>
+
+        <div class="hero__quote reveal" data-reveal-delay="120">
+          <span class="hero__quote-mark" aria-hidden="true">&#8220;</span>
+          <blockquote class="hero__quote-text" id="dailyQuote">
+            Discipline is choosing between what you want now and what you want most.
+          </blockquote>
+          <p class="hero__quote-attr" id="dailyQuoteAuthor">— Abraham Lincoln</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================
+         TO-DO SECTION
+    ============================================= -->
+    <section class="section" id="todo">
+      <div class="section__inner">
+
+        <div class="section__header reveal">
+          <p class="eyebrow">01 — Focus</p>
+          <h2 class="section__title">Today&rsquo;s Agenda</h2>
+        </div>
+
+        <div class="todo reveal" data-reveal-delay="80">
+
+          <form class="todo__form" id="todoForm">
+            <input
+              type="text"
+              class="todo__input"
+              id="todoInput"
+              placeholder="Add a task for today&hellip;"
+              aria-label="New task"
+              autocomplete="off"
+            >
+            <button type="submit" class="btn btn--primary">
+              <i data-lucide="plus" class="btn__icon"></i>
+              <span>Add</span>
+            </button>
+          </form>
+
+          <ul class="todo__list" id="todoList">
+            <!-- Task items injected by JavaScript -->
+          </ul>
+
+          <p class="todo__empty" id="todoEmpty">Nothing on the list yet. Add your first task above.</p>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================
+         NOTES SECTION
+    ============================================= -->
+    <section class="section section--alt" id="notes">
+      <div class="section__inner">
+
+        <div class="section__header reveal">
+          <p class="eyebrow">02 — Reflections</p>
+          <h2 class="section__title">Notes</h2>
+        </div>
+
+        <div class="notes reveal" data-reveal-delay="80">
+
+          <form class="notes__form" id="notesForm">
+            <input
+              type="text"
+              class="notes__title-input"
+              id="noteTitleInput"
+              placeholder="Note title"
+              aria-label="Note title"
+              autocomplete="off"
+            >
+            <textarea
+              class="notes__body-input"
+              id="noteBodyInput"
+              placeholder="Write a thought, a summary, a reminder&hellip;"
+              aria-label="Note content"
+              rows="3"
+            ></textarea>
+            <button type="submit" class="btn btn--outline">
+              <i data-lucide="feather" class="btn__icon"></i>
+              <span>Save Note</span>
+            </button>
+          </form>
+
+          <div class="notes__grid" id="notesGrid">
+            <!-- Note cards injected by JavaScript -->
+          </div>
+
+          <p class="notes__empty" id="notesEmpty">Your notes will appear here once you save one.</p>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================
+         WEEKLY TIMETABLE SECTION
+    ============================================= -->
+    <section class="section" id="timetable">
+      <div class="section__inner">
+
+        <div class="section__header reveal">
+          <p class="eyebrow">03 — Structure</p>
+          <h2 class="section__title">Weekly Timetable</h2>
+        </div>
+
+        <div class="timetable reveal" data-reveal-delay="80">
+          <div class="timetable__grid" id="timetableGrid" role="table" aria-label="Weekly timetable">
+            <!-- Day columns injected by JavaScript -->
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============================================
+       FOOTER
+  ============================================= -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <p class="footer__text">StudyHub — a quieter place to keep your work.</p>
+      <p class="footer__meta">Crafted for focus, not for noise.</p>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
